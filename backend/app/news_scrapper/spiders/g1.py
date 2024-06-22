@@ -1,5 +1,4 @@
 import scrapy
-
 from news_scrapper.items import PostItem
 
 
@@ -29,7 +28,7 @@ class G1Spider(scrapy.Spider):
         post['title'] = response.css("div.title h1::text").get()
         post['url'] = response.url
         post['description'] = response.css("div.subtitle h2::text").get()
-        post['datetime'] = response.css(
+        post['date_published'] = response.css(
             "div.content-publication-data time::attr(datetime)"
         ).get()
         post["type"] = response.css("h1.header-title a::text").get()

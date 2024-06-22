@@ -1,9 +1,9 @@
+from datetime import datetime
 from typing import Optional
 
 import sqlalchemy as sa
-from sqlalchemy.orm import Mapped, mapped_column
-
 from services.db import Base, engine
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 class BaseTable(Base):
@@ -20,7 +20,9 @@ class Post(BaseTable):
     title: Mapped[str]
     url: Mapped[str]
     description: Mapped[str]
-    datetime: Mapped[str]
+    date_published: Mapped[datetime] = mapped_column(
+        sa.DateTime(timezone=True)
+    )
     type: Mapped[Optional[str]]
 
 

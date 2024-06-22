@@ -1,5 +1,4 @@
 import scrapy
-
 from news_scrapper.items import PostItem
 
 
@@ -41,7 +40,7 @@ class UOLSpider(scrapy.Spider):
         post["title"] = response.css("h1.title::text").get()
         post["url"] = response.url
         post["description"] = "".join(description)
-        post["datetime"] = response.css("time::attr(datetime)").get()
+        post["date_published"] = response.css("time::attr(datetime)").get()
         post["type"] = response.css("span.kicker-item a::text").get()
 
         yield post

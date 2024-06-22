@@ -3,9 +3,10 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
+from dateutil import parser
+
 # useful for handling different item types with a single interface
 from itemadapter.adapter import ItemAdapter
-
 from models import Post
 from services.db import Session
 
@@ -26,7 +27,10 @@ class NewsScrapperPipeline:
                 value = adapter.get(field_name)
                 if not value:
                     adapter[field_name] = ""
-
+            if field_name == "date_published":
+                value = adapter.get(field_name)
+                if value:
+                    adapter[field_name] = parser.isoparse(value)
         return item
 
 

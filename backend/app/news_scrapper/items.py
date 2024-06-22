@@ -12,5 +12,5 @@ class PostItem(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
     description = scrapy.Field()
-    datetime = scrapy.Field()
+    date_published = scrapy.Field()
     type = scrapy.Field()
