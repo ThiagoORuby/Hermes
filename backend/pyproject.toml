@@ -13,6 +13,8 @@ psycopg2 = "^2.9.9"
 fastapi = "^0.111.0"
 arq = "^0.26.0"
 python-dateutil = "^2.9.0.post0"
+pydantic-settings = "^2.3.3"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
