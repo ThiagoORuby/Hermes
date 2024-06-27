@@ -16,7 +16,7 @@ class BaseTable(Base):
 class Post(BaseTable):
     __tablename__ = 'posts'
 
-    image_url: Mapped[str]
+    image_url: Mapped[Optional[str]]
     title: Mapped[str]
     url: Mapped[str]
     description: Mapped[str]
