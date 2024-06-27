@@ -6,6 +6,7 @@
 from dateutil import parser
 
 # useful for handling different item types with a single interface
+from datetime import datetime
 from itemadapter.adapter import ItemAdapter
 from models import Post
 from services.db import Session
@@ -29,7 +30,7 @@ class NewsScrapperPipeline:
                     adapter[field_name] = ""
             if field_name == "date_published":
                 value = adapter.get(field_name)
-                if value:
+                if value and type(value) != datetime:
                     adapter[field_name] = parser.isoparse(value)
         return item
 
